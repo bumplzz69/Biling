@@ -1,0 +1,31 @@
+@(bilings: List[Biling])
+
+@import helper._
+
+@main("invoicexpress") {
+	
+	<h3>@bilings.size() Invoice(s)</h3>
+
+	<ul>
+		@for(biling <- bilings) {
+
+		<li>
+			Date: @biling.date | @biling.validate | @biling.reference | @biling.isencaoIVA | @biling.description | @biling.retention | @biling.currency
+			
+			
+			@form(routes.BilingController.editBiling(biling.id)) {
+				<input type="submit" value="edit"/>
+			}
+			
+			@form(routes.BilingController.deleteBiling(biling.id)) {
+				<input type="submit" value="delete"/>
+			}
+		</li>
+
+		}
+	</ul>
+	
+	@form(routes.BilingController.newBiling()) {
+		<input type="submit" value="Nova Factura"/>
+	}
+}

@@ -7,3 +7,10 @@ GET     /                           controllers.Application.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+
+# Biling page
+GET		/invoice					controllers.BilingController.bilins()
+POST	/invoice					controllers.BilingController.newBiling()
+POST	/invoice/:id				controllers.BilingController.editBiling(id: Long)
+POST	/invoice/:id/delete			controllers.BilingController.deleteBiling(id: Long)

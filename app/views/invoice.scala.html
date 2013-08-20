@@ -1,0 +1,50 @@
+@(bilingForm: Form[Biling])
+
+@import helper._
+
+@main("invoicexpress") {
+
+	<h3>Nova factura</h3>
+
+	@form(routes.BilingController.newBiling()) {
+	
+		<h4>Detalhes do Documento</h4>
+	
+		@inputText(bilingForm("date"), '_label -> "Data")
+		@inputText(bilingForm("validate"), '_label -> "Validade")
+		@inputText(bilingForm("reference"), '_label -> "Referência")
+		@inputText(bilingForm("isencaoIVA"), '_label -> "Isenção do IVA")
+		@inputText(bilingForm("description"), '_label -> "Descrição")
+		@inputText(bilingForm("retention"), '_label -> "Retenção")
+		@select(
+			bilingForm("currency"), 
+			options("1" -> "Real (R$)", "2" -> "Dolar ($)" ),
+			'_label -> "Moeda", 
+			'_default -> "Euro (€)",
+			'_showConstraint -> false
+		)
+		
+		<h4>Dados do Cliente</h4>
+		
+		@inputText(bilingForm("client.name"), '_label -> "Nome")
+		@inputText(bilingForm("client.nif"), '_label -> "NIF")
+		@inputText(bilingForm("client.email"), '_label -> "E-Mail")
+		@inputText(bilingForm("client.address"), '_label -> "Endereço")
+		@inputText(bilingForm("client.cep"), '_label -> "Código Postal")
+		@inputText(bilingForm("client.country"), '_label -> "País")
+		
+		<h4>Itens</h4>
+		
+		@inputText(bilingForm("items.reference"), '_label -> "Referencia")
+		@inputText(bilingForm("items.description"), '_label -> "Descrição")
+		@inputText(bilingForm("items.price"), '_label -> "Preço")
+		@inputText(bilingForm("items.quantity"), '_label -> "Quantidade")
+		@inputText(bilingForm("items.unit"), '_label -> "Unidade")
+		@inputText(bilingForm("items.iva"), '_label -> "IVA")
+		@inputText(bilingForm("items.descount"), '_label -> "Desconto")
+	
+		<input type="submit" value="Guardar como Rascunho" />
+		<a href="@routes.BilingController.bilins()" class="btn">Voltar</a>
+	}
+
+}
