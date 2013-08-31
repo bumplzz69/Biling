@@ -7,29 +7,31 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
 @Entity
 public class Client extends Model {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    public Long id;
+	@Id
+	public Long id;
 
-    public String name;
+	@Required(message="nao e valido")
+	public String name;
 
-    public Long nif;
+	public String nif;
 
-    public String email;
+	public String email;
 
-    public String address;
+	public String address;
 
-    public String cep;
+	public String cep;
 
-    public Integer country;
+	public String country;
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    public List<Biling> bilings;
+	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+	public List<Invoice> invoices;
 
 }

@@ -10,7 +10,7 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 
 # Biling page
-GET		/invoice					controllers.BilingController.bilins()
-POST	/invoice					controllers.BilingController.newBiling()
-POST	/invoice/:id				controllers.BilingController.editBiling(id: Long)
-POST	/invoice/:id/delete			controllers.BilingController.deleteBiling(id: Long)
+GET		/invoice					controllers.BillingController.invoices()
+POST	/invoice					controllers.BillingController.newInvoice()
+POST	/invoice/:id				controllers.BillingController.editInvoice(id: Long)
+POST	/invoice/:id/delete			controllers.BillingController.deleteInvoice(id: Long)
